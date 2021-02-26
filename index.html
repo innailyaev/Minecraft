@@ -19,7 +19,12 @@
             <input type="button" id="start" value="Start">
         </div>
     </div>
-    <script src="/main.js"></script>
+    <script>
+        const btn=document.querySelector("#start");
+        btn.addEventListener('click', () => {
+            window.location.href = "game.html";
+        })
+    </script>
 </body>
 
 </html>

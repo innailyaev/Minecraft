@@ -1,3 +1,7 @@
+:root{
+    --sky-color:#87ceeb;  
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -5,6 +9,138 @@
 }
 
 body{
-    background-color: rgb(37, 111, 136);
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    background-color: #bae1ff;
+
+}
+
+/* Right side */
+#tools{
+    height: 99vh;
+    width: 20%;
+    padding-top: 30px;
+    background-color: #bae1ff;
+}
+
+#tools .tool{
+    height: 100px;
+    width: 100px;
+    border: solid var(--sky-color);
+    margin-bottom: 20px;
+    margin-left: 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    cursor: pointer;
+}
+
+#tools .tool:hover{
+    background-color: var(--sky-color);
+}
+
+#tools #pickaxe{
+    background-image: url("/images/Pickaxe.png");
+}
+
+#tools #axe{
+    background-image: url("/images/axe.png");
+}
+
+#tools #shoval{
+    background-image: url("/images/Shovel.png");
+}
+
+#tools .toolsDown{
+    width: 200px;
+    height: 500px;
+    margin-left: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#tools .toolsDown #count{
+    height: 40px;
+    width: 40px;
+    border: solid var(--sky-color);
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+}
+
+#tools .toolsDown .divInve{
+    height: 70px;
+    width: 70px;
+    border: solid var(--sky-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+
+/*  */
+
+.wrap{
+    height: 100vh;
     
 }
+
+#world{
+    display: flex;
+    flex-wrap:wrap;
+    height:fit-content; 
+    width: 1250px;
+}
+
+.tile{
+    border: solid thin black;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.tile:hover{
+    border: solid thin white;
+
+}
+
+.sky{
+    background-color: var(--sky-color);
+    /* background-image: url("/images/Sky.jpg"); */
+}
+
+.grass{
+    background-image: url("/images/grass.png");  
+}
+
+.cloud{
+    background-image: url("/images/cloud.png");
+}
+
+.rock{
+    background-image: url("/images/rock.png");
+}
+
+.soil{
+    background-image: url("/images/soil.jpg");
+}
+
+.treeLeavs{
+    background-image: url("/images/tree-leaves.png");
+}
+
+.wood{
+    background-image: url("/images/wood.png");
+}
+
+.sun{
+    background-color: yellow;
+}
+
+
+/*  */
