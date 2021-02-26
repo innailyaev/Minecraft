@@ -5,27 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="/gameStyle.css">
+    <link rel="stylesheet" href="mediaQueryGame.css">
     <title>Document</title>
 </head>
 
 <body>
+    <button id="backBtn"><i class="fas fa-arrow-left fa-2x"></i></button>
+    <div id="logo"></div>
     <div class="wrap">
-        <div id="world"> </div>
+        <div id="world"></div>
     </div>
     <div id="tools">
-        <div id="pickaxe" class="tool"></div>
-        <div id="axe" class="tool"></div>
-        <div id="shoval" class="tool"></div>
+        <div class=toolsUp>
+            <h3>pickaxe</h3>
+            <div id="pickaxe" class="tool"></div>
+            <h3>axe</h3>
+            <div id="axe" class="tool"></div>
+            <h3>shoval</h3>
+            <div id="shoval" class="tool"></div>
+        </div>
         <div class="toolsDown">
-            <div id="count"></div>
-            <div id="grass" class="divInve"></div>
-            <div id="count"></div>
-            <div id="soil" class="divInve"></div>
-            <div id="count"></div>
-            <div id="wood" class="divInve"></div>
-            <div id="count"></div>
-            <div id="rock" class="divInve"></div>
+            <h2>Inventury</h2>
+            <div class="row">
+                <div class="inve">
+                    <div id="countLeaves" class="count"></div>
+                    <div id="countWood" class="count"></div>
+                    <div id="countSoil" class="count"></div>
+                </div>
+                <div class="inve">
+                    <div id="treeLeaves" class="divInve"></div>
+                    <div id="wood" class="divInve"></div>
+                    <div id="soil" class="divInve"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="inve">
+                    <div id="countGrass" class="count"></div>
+                    <div id="countRock" class="count"></div>
+                </div>
+                <div class="inve">
+                    <div id="grass" class="divInve"></div>
+                    <div id="rock" class="divInve"></div>
+                </div>
+            </div>
+            <input type="button" value="Reset Game" id="reset">
         </div>
     </div>
     <script src="/main.js"></script>

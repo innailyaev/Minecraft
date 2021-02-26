@@ -11,17 +11,41 @@
 body{
     height: 100vh;
     display: flex;
-    justify-content:center;
     background-color: #bae1ff;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
+#logo{
+    position: relative;
+    height: 100vh;
+    width: 150px;
+    background-image: url("/images/Logo1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#backBtn{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    margin-right: 30px;
+    border: none;
+    color: teal;
+    cursor: pointer;
+    transition: all ;
 }
 
 /* Right side */
 #tools{
-    height: 99vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 880px;
     width: 20%;
     padding-top: 30px;
     background-color: #bae1ff;
+
 }
 
 #tools .tool{
@@ -29,11 +53,12 @@ body{
     width: 100px;
     border: solid var(--sky-color);
     margin-bottom: 20px;
-    margin-left: 35%;
+    margin-left: 36%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
-    cursor: pointer;
+    cursor: pointer;   
+    border-radius: 20px;
 }
 
 #tools .tool:hover{
@@ -52,24 +77,49 @@ body{
     background-image: url("/images/Shovel.png");
 }
 
+#tools h3{
+    width: 100%;
+    text-align: center;
+}
+
 #tools .toolsDown{
-    width: 200px;
-    height: 500px;
-    margin-left: 22%;
+    position:relative;
+    width: 75%;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 35px;
+}
+
+#tools .toolsDown h2{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 45px;
+    color:white;
+}
+
+#tools .toolsDown h2:hover{
+    color:teal
+}
+
+#tools .toolsDown .row{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+#tools .toolsDown .row .inve{
+    display: flex;
     justify-content: space-evenly;
 }
 
-#tools .toolsDown #count{
-    height: 40px;
-    width: 40px;
-    border: solid var(--sky-color);
+#tools .toolsDown .count{
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     font-size: 30px;
     text-align: center;
+
 }
 
 #tools .toolsDown .divInve{
@@ -79,14 +129,31 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 
+    cursor:pointer;	
+    border-radius: 20px;
 }
 
+#tools .toolsDown #reset{
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    background: transparent;
+    margin-left: 90px;
+    border:none;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#tools .toolsDown #reset:hover{
+    background: var(--sky-color);
+}
 
 /*  */
 
 .wrap{
-    height: 100vh;
-    
+    height: 100vh;   
+    padding-top: 25px;
 }
 
 #world{
@@ -97,7 +164,7 @@ body{
 }
 
 .tile{
-    border: solid thin black;
+    /* border: solid thin black; */
     width: 40px;
     height: 40px;
     background-size: cover;
@@ -105,13 +172,11 @@ body{
 }
 
 .tile:hover{
-    border: solid thin white;
-
+    border: solid thin lightgray;
 }
 
 .sky{
     background-color: var(--sky-color);
-    /* background-image: url("/images/Sky.jpg"); */
 }
 
 .grass{
@@ -130,7 +195,7 @@ body{
     background-image: url("/images/soil.jpg");
 }
 
-.treeLeavs{
+.treeLeaves{
     background-image: url("/images/tree-leaves.png");
 }
 

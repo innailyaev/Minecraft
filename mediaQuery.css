@@ -1,0 +1,26 @@
+
+@media(max-width: 500px) {
+  .main{
+    background-size: contain;
+
+  }  
+  
+  .main .logo {
+    background-size: contain;
+    }
+  }
+
+
+
+
+
+
+
+
+  @media(max-width: 768px) {
+    .main .logo {
+      width: 50%;
+      height: 130px;
+      background-size: contain;
+  }
+}
