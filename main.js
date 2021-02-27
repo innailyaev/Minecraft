@@ -469,7 +469,7 @@ reset.addEventListener('click',()=>{
     window.location.reload();
   })
 
-  document.addEventListener('click',()=>{
+document.addEventListener('click',()=>{
     msg.style.display = "none";
     pickaxe.style.backgroundColor='initial';
     axe.style.backgroundColor='initial';
