@@ -12,7 +12,8 @@ const grass=document.querySelector("#grass");
 const btn=document.querySelector("#backBtn");
 const reset=document.querySelector("#reset");
 const msg=document.querySelector("#msg");
-
+const world1Btn=document.querySelector("#world1");
+const world2Btn=document.querySelector("#world2");
 
 let countRock=document.querySelector("#countRock");
 let countLeaves=document.querySelector("#countLeaves");
@@ -63,26 +64,6 @@ for(let i=0;i<22;i++){
     }
 }
 
-//functions
-/*function draw receives the matrix that needs to be insert into the board gamem, the appropriate row and column in the 
-board game, typeNum is the type of the element and type is the type of class
-that will be added to that div for the image. */ 
-//type: sky=0, grass=1, soil=2, rock=3, wood=4, treeLeaves=5,cloud=6,sun=7;
-function draw(matrix,row,column,typeNum,type){
-
-    for(let i=0;i<matrix.length;i++){
-        for(let j=0;j<matrix[0].length;j++){
-            if(matrix[i][j]===typeNum){
-                cube=document.getElementById(`${row+i},${column+j}`);
-                cube.classList.add(type);
-                cube.setAttribute('type',typeNum);
-
-                }
-            }
-        }
-    }
-
-
 // draw trees, rocks, clouds, sun
 const treeMatrix=[
     [0,0,0,5,5,0,0,0,],
@@ -103,6 +84,13 @@ const rockMatrix=[
     [0,0,3,0,0,],
     [0,3,3,3,0,],
     [3,3,3,3,3,]   
+]
+
+const rockMatrix2=[
+    [0,0,0,3,],
+    [0,0,3,3,],
+    [0,3,3,3,],
+    [3,3,3,3,]   
 ]
 
 const treeMatrix2=[
@@ -132,7 +120,30 @@ const sunMatrix=[
     [7,0,0,0]
 ]
 
-// set to function the matrix
+world1(); //defult world
+
+//functions
+/*function draw receives the matrix that needs to be insert into the board gamem, the appropriate row and column in the 
+board game, typeNum is the type of the element and type is the type of class
+that will be added to that div for the image. */ 
+//type: sky=0, grass=1, soil=2, rock=3, wood=4, treeLeaves=5,cloud=6,sun=7;
+function draw(matrix,row,column,typeNum,type){
+
+    for(let i=0;i<matrix.length;i++){
+        for(let j=0;j<matrix[0].length;j++){
+            if(matrix[i][j]===typeNum){
+                cube=document.getElementById(`${row+i},${column+j}`);
+                cube.classList.add(type);
+                cube.setAttribute('type',typeNum);
+
+                }
+            }
+        }
+    }
+
+
+// function world1 draw the elements in the board game matrix (call function draw)
+function world1(){
 draw(treeMatrix,5,21,5,'treeLeaves');
 draw(woodMatrix,10,24,4,'wood')
 draw(rockMatrix,11,17,3,'rock');
@@ -144,16 +155,34 @@ draw(woodMatrix2,10,14,4,'wood');
 draw(cloudMatrix,1,10,6,'cloud');
 draw(cloudMatrix,1,17,6,'cloud');
 draw(sunMatrix,0,0,7,'sun');
+}
 
+// function world2 draw the elements in the board game matrix (call function draw)
+function world2(){
+    draw(treeMatrix,5,7,5,'treeLeaves');
+    draw(woodMatrix,10,10,4,'wood')
+    draw(rockMatrix,11,17,3,'rock');
+    draw(treeMatrix2,5,2,5,'treeLeaves');
+    draw(woodMatrix2,10,4,4,'wood');
+    draw(cloudMatrix,1,10,6,'cloud');
+    draw(cloudMatrix,4,25,6,'cloud');
+    draw(rockMatrix2,10,27,3,'rock');
+}
 
-
-
-
-
-
-console.log(document.getElementById(`${15},${1}`).getAttribute("type"));
-
-
+// function that erase the elements of the previous world before drawing the new world
+function clearWorld(){
+    for(let i=0;i<22;i++){
+        for(let j=0;j<=30;j++){
+            cube=document.getElementById(`${i},${j}`);
+            cube.setAttribute('type',0);
+            cube.classList.remove('treeLeaves');
+            cube.classList.remove('wood');
+            cube.classList.remove('rock');
+            cube.classList.remove('cloud');
+            cube.classList.remove('sun');
+        }
+    }
+}
 
 //Event on the window
 //Tools Event Listeners
@@ -170,12 +199,16 @@ pickaxe.addEventListener('click',()=>{
             inventury.rock=inventury.rock+1;
             countRock.innerText=inventury.rock;
         }
+        else{
+            pickaxe.style.backgroundColor='red';
+        }
 }})
 
 //axe
 axe.addEventListener('click',()=>{
         window.onclick = e => {
         let type=e.target.getAttribute("type");
+        console.log(type);
         let id=e.target.getAttribute("id");
         if(type==tools.axe[0]){
             document.getElementById(`${id}`).classList.remove(`treeLeaves`);
@@ -184,12 +217,15 @@ axe.addEventListener('click',()=>{
             inventury.treeLeaves=inventury.treeLeaves+1;
             countLeaves.innerText=inventury.treeLeaves;
         }
-        if(type==tools.axe[1]){
+        else if(type==tools.axe[1]){
             document.getElementById(`${id}`).classList.remove(`wood`);
             document.getElementById(`${id}`).setAttribute('type',0);
             wood.classList.add('wood');
             inventury.wood=inventury.wood+1;
             countWood.innerText=inventury.wood;
+        }
+        else{
+            axe.style.backgroundColor='red';
         }
 }})
 
@@ -200,7 +236,6 @@ shoval.addEventListener('click',()=>{
         let id=e.target.getAttribute("id");
         let location=document.getElementById(`${id}`).getAttribute("id");
         let xy=location.split(',');
-        // console.log(xy[0],xy[1]);
         
         if(type==tools.shoval[0]){ //grass
             document.getElementById(`${id}`).classList.remove(`grass`);
@@ -210,7 +245,7 @@ shoval.addEventListener('click',()=>{
             countGrass.innerText=inventury.grass;
             msg.style.display = "none";
         }
-        if(type==tools.shoval[1]){ //soil
+        else if(type==tools.shoval[1]){ //soil
             let upDiv=document.getElementById(`${xy[0]-1},${xy[1]}`);
             if(upDiv.getAttribute("type")==0){
             document.getElementById(`${id}`).classList.remove(`soil`);
@@ -220,10 +255,13 @@ shoval.addEventListener('click',()=>{
             countSoil.innerText=inventury.soil;
             msg.style.display = "none";
         }
-        else{
-            msg.style.display = "block";
+            else{
+                msg.style.display = "block";
+            }
         }
-    }
+        else{
+            shoval.style.backgroundColor='red';
+         }
 }})
 
 // grass EventListener, type=1
@@ -300,6 +338,7 @@ wood.addEventListener('click',()=>{
         }
     }
 }})
+
 // treeLeaves EventListener, type=5
 treeLeaves.addEventListener('click',()=>{
     window.onclick = e => {
@@ -322,7 +361,7 @@ treeLeaves.addEventListener('click',()=>{
 
 //buttons EventListeners
 btn.addEventListener('click', () => {
-    window.location.href = "index.html";
+    window.location.href = "landingPage.html";
 })
 
 reset.addEventListener('click',()=>{
@@ -331,38 +370,18 @@ reset.addEventListener('click',()=>{
 
   document.addEventListener('click',()=>{
     msg.style.display = "none";
+    pickaxe.style.backgroundColor='initial';
+    axe.style.backgroundColor='initial';
+    shoval.style.backgroundColor='initial';
 
 })
 
+world1Btn.addEventListener('click',()=>{
+    clearWorld();
+    world1();
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* removeDive function that gets the tool, toolId to check with the div type id, divType 
-to see which div to remove,boardType to add this type to inventory, inve for the counter,
-counter to display the counter. */
-// function removeDiv(tool,toolId,divType,boardType,inve,counter){
-//         window.onclick = e => {
-//         let type=e.target.getAttribute("type");
-//         let id=e.target.getAttribute("id");
-//         if(type==toolId){
-//             document.getElementById(`${id}`).classList.remove(`${divType}`);
-//             boardType.classList.add(`${divType}`);
-//             inve=inve+1;
-//             counter.innerText=inve;
-//             tool.style.backgroundColor = "initial";
-//         }
-//         else{
-//             tool.style.backgroundColor = "red";
-//         }
-//     } 
-// }
+world2Btn.addEventListener('click',()=>{
+    clearWorld();
+    world2();
+})
