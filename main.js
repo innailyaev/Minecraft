@@ -462,7 +462,7 @@ treeLeaves.addEventListener('click',()=>{
 
 //buttons EventListeners
 btn.addEventListener('click', () => {
-    window.location.href = "landingPage.html";
+    window.location.href = "index.html";
 })
 
 reset.addEventListener('click',()=>{
