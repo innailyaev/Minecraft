@@ -11,6 +11,7 @@ const soil=document.querySelector("#soil");
 const grass=document.querySelector("#grass");
 const btn=document.querySelector("#backBtn");
 const reset=document.querySelector("#reset");
+const msg=document.querySelector("#msg");
 
 
 let countRock=document.querySelector("#countRock");
@@ -82,7 +83,7 @@ function draw(matrix,row,column,typeNum,type){
     }
 
 
-// draw trees, rocks, clouds,
+// draw trees, rocks, clouds, sun
 const treeMatrix=[
     [0,0,0,5,5,0,0,0,],
     [0,0,5,5,5,5,0,0,],
@@ -155,7 +156,8 @@ console.log(document.getElementById(`${15},${1}`).getAttribute("type"));
 
 
 //Event on the window
-//Event Listeners fot the tools
+//Tools Event Listeners
+//pickaxe
 pickaxe.addEventListener('click',()=>{
         window.onclick = e => {
         let type=e.target.getAttribute("type");
@@ -170,6 +172,7 @@ pickaxe.addEventListener('click',()=>{
         }
 }})
 
+//axe
 axe.addEventListener('click',()=>{
         window.onclick = e => {
         let type=e.target.getAttribute("type");
@@ -190,25 +193,39 @@ axe.addEventListener('click',()=>{
         }
 }})
 
+//shoval
 shoval.addEventListener('click',()=>{
         window.onclick = e => {
         let type=e.target.getAttribute("type");
         let id=e.target.getAttribute("id");
-        if(type==tools.shoval[0]){
+        let location=document.getElementById(`${id}`).getAttribute("id");
+        let xy=location.split(',');
+        // console.log(xy[0],xy[1]);
+        
+        if(type==tools.shoval[0]){ //grass
             document.getElementById(`${id}`).classList.remove(`grass`);
             document.getElementById(`${id}`).setAttribute('type',0);
             grass.classList.add('grass');
             inventury.grass=inventury.grass+1;
             countGrass.innerText=inventury.grass;
+            msg.style.display = "none";
         }
-        if(type==tools.shoval[1]){
+        if(type==tools.shoval[1]){ //soil
+            let upDiv=document.getElementById(`${xy[0]-1},${xy[1]}`);
+            if(upDiv.getAttribute("type")==0){
             document.getElementById(`${id}`).classList.remove(`soil`);
             document.getElementById(`${id}`).setAttribute('type',0);
             soil.classList.add('soil');
             inventury.soil=inventury.soil+1;
             countSoil.innerText=inventury.soil;
+            msg.style.display = "none";
         }
+        else{
+            msg.style.display = "block";
+        }
+    }
 }})
+
 // grass EventListener, type=1
 grass.addEventListener('click',()=>{
     window.onclick = e => {
@@ -222,7 +239,7 @@ grass.addEventListener('click',()=>{
             inventury.grass=inventury.grass-1;
             countGrass.innerText=inventury.grass;
         }
-        if(inventury.rock==0){
+        if(inventury.grass==0){
             grass.classList.remove('grass');
         }
     }
@@ -302,6 +319,7 @@ treeLeaves.addEventListener('click',()=>{
     }
 }})
 
+
 //buttons EventListeners
 btn.addEventListener('click', () => {
     window.location.href = "index.html";
@@ -310,6 +328,11 @@ btn.addEventListener('click', () => {
 reset.addEventListener('click',()=>{
     window.location.reload();
   })
+
+  document.addEventListener('click',()=>{
+    msg.style.display = "none";
+
+})
 
 
 

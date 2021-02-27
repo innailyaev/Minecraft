@@ -5,25 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="mediaQuery.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/popUpWindow.css">
+    <link rel="stylesheet" href="/css/indexMediaQuery.css">
     <title>Document</title>
 </head>
 
 <body>
     <div class="main">
         <div class="logo"></div>
-        
-            <!-- <p class="p1">Select a tool</p>
-            <p><span>Axe</span> - for cutting trees</p>
-            <p><span>Pickaxe</span> - for mining rocks</p>
-            <p><span>Shovel</span> - for digging dirt</p> -->
-            <div><input type="button" id="start" value="Start"></div>
-       
+        <div class="buttons">
+            <a class="tutorial" id="button" href="#popup1">Tutorial</a>
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h1>Game Instructions</h1>
+                    <a class="close" href="#">&times;</a> 
+                    <div class="content">
+                        <h2>Select a tool</h2>
+                        <p><span>Axe</span> - for cutting trees</p>
+                        <p><span>Pickaxe</span> - for mining rocks</p>
+                        <p><span>Shovel</span> - for digging dirt</p>
+                        <a href="https://www.youtube.com/watch?v=jritMw-79ck" target="_blank">Link to game tutorial</a>
+                    </div>
+                </div>
+            </div>
+            <div><input type="button" id="button" class="start" value="Start"></div>
+        </div>
     </div>
 
     <script>
-        const btn=document.querySelector("#start");
+        const btn = document.querySelector(".start");
         btn.addEventListener('click', () => {
             window.location.href = "game.html";
         })

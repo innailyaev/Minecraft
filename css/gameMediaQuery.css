@@ -1,0 +1,189 @@
+/* 0 - 500 */
+@media(max-width: 500px) {
+    body{
+        height:fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    }
+
+    #logo{
+        position: relative;
+        height: 250px;
+        width: 80px;
+        transform: rotate(90deg);
+        background-image: url("/images/Logo1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    .wrap{
+        height: fit-content;   
+        padding-top: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .tile{
+        width: 20px;
+        height: 20px;
+    }
+
+    #tools{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin-left: 0px;
+        padding-top: 0px;
+    
+    }
+    #tools .toolsUp{
+        display: flex;
+        flex-direction: column;
+    }
+    #tools .tool{
+        height: 50px;
+        width: 50px;
+    }
+    
+    #tools h3{
+        width: 100%;
+        text-align: center;
+    }
+    
+    
+    #tools .toolsDown{
+        position:relative;
+        width: 70%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 0px;
+    }
+    
+    #tools .toolsDown h2{
+        font-size: 25px;
+    }
+    
+    #tools .toolsDown .row .inve{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    #tools .toolsDown .count{
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+    }
+    
+    #tools .toolsDown .divInve{
+        height: 50px;
+        width: 50px;
+    }
+    
+    #tools .toolsDown #reset{
+        margin-left:90px;
+    }
+    
+}
+
+/* 501 - 768 */
+
+@media(min-width:501px) and (max-width: 768px){
+    body{
+        height:fit-content;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #logo{
+        position: relative;
+        height: 250px;
+        width: 80px;
+        transform: rotate(90deg);
+        background-image: url("/images/Logo1.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    .wrap{
+        height: fit-content;   
+        padding-top: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .tile{
+        width: 20px;
+        height: 20px;
+    }
+
+    #tools{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        margin-left: 0px;
+        padding-top: 0px;
+    
+    }
+    #tools .toolsUp{
+        display: flex;
+        flex-direction: column;
+    }
+    #tools .tool{
+        height: 50px;
+        width: 50px;
+    }
+
+    #tools #msg{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        color:white;
+        background-color: red;
+        display: none;
+        margin-left: 200px;
+    }
+
+    #tools h3{
+        width: 100%;
+        text-align: center;
+    }
+    
+    
+    #tools .toolsDown{
+        position:relative;
+        width: 70%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-left: 0px;
+    }
+    
+    #tools .toolsDown h2{
+        font-size: 25px;
+    }
+    
+    #tools .toolsDown .row .inve{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    #tools .toolsDown .count{
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+    }
+    
+    #tools .toolsDown .divInve{
+        height: 50px;
+        width: 50px;
+    }
+    
+    #tools .toolsDown #reset{
+        margin-left: 200px;
+    }
+    
+}

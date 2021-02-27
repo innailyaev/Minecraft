@@ -11,16 +11,20 @@
   }
 
 
-
-
-
-
-
-
   @media(max-width: 768px) {
     .main .logo {
       width: 50%;
       height: 130px;
       background-size: contain;
   }
+  .popup{
+    width: 80%;
+    height: 50%;
+  }
+
+  .popup h1{
+    margin-bottom: 10px;
 }
+}
+
+  

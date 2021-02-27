@@ -33,7 +33,10 @@ body{
     border: none;
     color: teal;
     cursor: pointer;
-    transition: all ;
+    transition: all 0.3s ease-out;
+}
+#backBtn:hover{
+    color: var(--sky-color);
 }
 
 /* Right side */
@@ -75,6 +78,15 @@ body{
 
 #tools #shoval{
     background-image: url("/images/Shovel.png");
+}
+
+#tools #msg{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color:white;
+    background-color: red;
+    display: none;
 }
 
 #tools h3{
