@@ -9,16 +9,35 @@
 }
 
 body{
+    font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
     display: flex;
     background-color: #bae1ff;
-    align-items: center;
-    justify-content: space-evenly;
 }
 
 .btnWorld{
     display: flex;
     flex-direction: column;
+    height: 400px;
+    justify-content: space-evenly;
+}
+
+.worldButtons{
+    width: 100px;
+    height: 50px;
+    border-radius: 20px/50px;
+    border: 2px solid #87ceeb;
+    border-width: medium;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.worldButtons:hover{
+    background-color: rgb(40, 108, 131);
+    color:white;
 }
 
 #logo{

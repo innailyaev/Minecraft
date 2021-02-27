@@ -14,6 +14,7 @@ const reset=document.querySelector("#reset");
 const msg=document.querySelector("#msg");
 const world1Btn=document.querySelector("#world1");
 const world2Btn=document.querySelector("#world2");
+const world3Btn=document.querySelector("#world3");
 
 let countRock=document.querySelector("#countRock");
 let countLeaves=document.querySelector("#countLeaves");
@@ -44,6 +45,7 @@ for(let row=0;row<22; row++){
 }
 
 //Fill the game board at first with sky and soil
+function fill(){
 for(let i=0;i<22;i++){
     for(let j=0;j<=30;j++){
         if(i===14){
@@ -62,6 +64,7 @@ for(let i=0;i<22;i++){
             cube.classList.add('sky');
         }
     }
+}
 }
 
 // draw trees, rocks, clouds, sun
@@ -93,6 +96,20 @@ const rockMatrix2=[
     [3,3,3,3,]   
 ]
 
+const rockMatrix3=[
+    [0,0,0,3,0,0,0],
+    [0,0,3,3,3,0,0],
+    [0,3,3,3,3,3,0],
+    [3,3,3,3,3,3,3]   
+]
+
+const rockMatrix4=[
+    [3,0,0,0,],
+    [3,3,0,0,],
+    [3,3,3,0,],
+    [3,3,3,3,]   
+]
+
 const treeMatrix2=[
     [0,0,5,0,0],
     [0,5,5,5,0],
@@ -108,6 +125,13 @@ const woodMatrix2=[
     [4]
 ]
 
+const woodMatrix3=[
+    [4,4],
+    [4,4],
+    [4,4]
+    
+]
+
 const cloudMatrix=[
     [0,6,6,0],
     [6,6,6,6]
@@ -120,6 +144,14 @@ const sunMatrix=[
     [7,0,0,0]
 ]
 
+const sunMatrix2=[
+    [7,7,7,7,7],
+    [0,7,7,7,0],
+    [0,0,7,0,0]
+   
+]
+
+fill();//first fill
 world1(); //defult world
 
 //functions
@@ -141,20 +173,88 @@ function draw(matrix,row,column,typeNum,type){
         }
     }
 
+// function that erase the elements of the previous world before drawing the new world
+function clearWorld(){
+    for(let i=0;i<22;i++){
+        for(let j=0;j<=30;j++){
+            cube=document.getElementById(`${i},${j}`);
+            if(cube.classList.contains('sun')){
+                cube.classList.remove('sun');
+                cube.setAttribute('type',0);
+            }
+            if(cube.classList.contains('treeLeaves')){
+                cube.classList.remove('treeLeaves');
+                cube.setAttribute('type',0);
+            }
+            if(cube.classList.contains('wood')){
+                cube.classList.remove('wood');
+                cube.setAttribute('type',0);
+            }
+            if(cube.classList.contains('rock')){
+                cube.classList.remove('rock');
+                cube.setAttribute('type',0);
+            }
+            if(cube.classList.contains('cloud')){
+                cube.classList.remove('cloud');
+                cube.setAttribute('type',0);
+            } 
+
+            if(i<14){ 
+                if(cube.classList.contains('grass')){
+                    cube.classList.remove('grass');
+                    cube.setAttribute('type',0);
+                } 
+                if(cube.classList.contains('soil')){
+                    cube.classList.remove('soil');
+                    cube.setAttribute('type',0);
+                }  
+            }
+            
+            if(i==14){
+                cube.classList.add('grass');
+                cube.setAttribute('type',1);
+            }
+
+            if(i>14){
+                cube.classList.add('soil');
+                cube.setAttribute('type',2);
+            }
+        }
+    }
+}
+
+// function that reset the inventury
+function clearInventury(){
+    inventury.soil=0;
+    inventury.grass=0;
+    inventury.rock=0;
+    inventury.treeLeaves=0;
+    inventury.wood=0;
+    countRock.innerText=inventury.rock;
+    countSoil.innerText=inventury.soil;
+    countWood.innerText=inventury.wood;
+    countGrass.innerText=inventury.grass;
+    countLeaves.innerText=inventury.treeLeaves;
+    grass.classList.remove('grass');
+    soil.classList.remove('soil');
+    rock.classList.remove('rock');
+    treeLeaves.classList.remove('treeLeaves');
+    wood.classList.remove('wood');
+}
 
 // function world1 draw the elements in the board game matrix (call function draw)
 function world1(){
-draw(treeMatrix,5,21,5,'treeLeaves');
-draw(woodMatrix,10,24,4,'wood')
-draw(rockMatrix,11,17,3,'rock');
-draw(treeMatrix2,5,2,5,'treeLeaves');
-draw(woodMatrix2,10,4,4,'wood');
-draw(rockMatrix,11,6,3,'rock');
-draw(treeMatrix2,5,12,5,'treeLeaves');
-draw(woodMatrix2,10,14,4,'wood');
-draw(cloudMatrix,1,10,6,'cloud');
-draw(cloudMatrix,1,17,6,'cloud');
-draw(sunMatrix,0,0,7,'sun');
+    draw(treeMatrix,5,21,5,'treeLeaves');
+    draw(woodMatrix,10,24,4,'wood')
+    draw(rockMatrix,11,17,3,'rock');
+    draw(treeMatrix2,5,2,5,'treeLeaves');
+    draw(woodMatrix2,10,4,4,'wood');
+    draw(rockMatrix,11,6,3,'rock');
+    draw(treeMatrix2,5,12,5,'treeLeaves');
+    draw(woodMatrix2,10,14,4,'wood');
+    draw(cloudMatrix,1,10,6,'cloud');
+    draw(cloudMatrix,1,17,6,'cloud');
+    draw(sunMatrix,0,0,7,'sun');
 }
 
 // function world2 draw the elements in the board game matrix (call function draw)
@@ -169,19 +269,20 @@ function world2(){
     draw(rockMatrix2,10,27,3,'rock');
 }
 
-// function that erase the elements of the previous world before drawing the new world
-function clearWorld(){
-    for(let i=0;i<22;i++){
-        for(let j=0;j<=30;j++){
-            cube=document.getElementById(`${i},${j}`);
-            cube.setAttribute('type',0);
-            cube.classList.remove('treeLeaves');
-            cube.classList.remove('wood');
-            cube.classList.remove('rock');
-            cube.classList.remove('cloud');
-            cube.classList.remove('sun');
-        }
-    }
+// function world3 draw the elements in the board game matrix (call function draw)
+function world3(){
+    draw(treeMatrix,6,7,5,'treeLeaves');
+    draw(woodMatrix3,11,10,4,'wood')
+    draw(rockMatrix3,10,17,3,'rock');
+    draw(cloudMatrix,1,10,6,'cloud');
+    draw(cloudMatrix,2,2,6,'cloud');
+    draw(cloudMatrix,4,25,6,'cloud');
+    draw(rockMatrix2,10,27,3,'rock');
+    draw(rockMatrix4,10,0,3,'rock');
+    draw(sunMatrix2,0,16,7,'sun');
+
+
+    
 }
 
 //Event on the window
@@ -378,10 +479,18 @@ reset.addEventListener('click',()=>{
 
 world1Btn.addEventListener('click',()=>{
     clearWorld();
+    clearInventury();
     world1();
 })
 
 world2Btn.addEventListener('click',()=>{
     clearWorld();
+    clearInventury();
     world2();
+})
+
+world3Btn.addEventListener('click',()=>{
+    clearWorld();
+    clearInventury();
+    world3();
 })
