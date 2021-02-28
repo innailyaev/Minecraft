@@ -2,7 +2,7 @@
 const world=document.querySelector("#world");
 const pickaxe=document.querySelector("#pickaxe");
 const axe=document.querySelector("#axe");
-const shoval=document.querySelector("#shoval");
+const shovel=document.querySelector("#shovel");
 
 const rock=document.querySelector("#rock");
 const treeLeaves=document.querySelector("#treeLeaves");
@@ -26,7 +26,7 @@ let cube;
 const tools={
     pickaxe:3,
     axe:[5,4],
-    shoval:[1,2]
+    shovel:[1,2]
 }
 //object for the inventury, the value is the counter 
 let inventury={
@@ -332,15 +332,15 @@ axe.addEventListener('click',()=>{
         }
 }})
 
-//shoval
-shoval.addEventListener('click',()=>{
+//shovel
+shovel.addEventListener('click',()=>{
         window.onclick = e => {
         let type=e.target.getAttribute("type");
         let id=e.target.getAttribute("id");
         let location=document.getElementById(`${id}`).getAttribute("id");
         let xy=location.split(',');
         
-        if(type==tools.shoval[0]){ //grass
+        if(type==tools.shovel[0]){ //grass
             document.getElementById(`${id}`).classList.remove(`grass`);
             document.getElementById(`${id}`).setAttribute('type',0);
             grass.classList.add('grass');
@@ -348,7 +348,7 @@ shoval.addEventListener('click',()=>{
             countGrass.innerText=inventury.grass;
             msg.style.display = "none";
         }
-        else if(type==tools.shoval[1]){ //soil
+        else if(type==tools.shovel[1]){ //soil
             let upDiv=document.getElementById(`${xy[0]-1},${xy[1]}`);
             if(upDiv.getAttribute("type")==0){
             document.getElementById(`${id}`).classList.remove(`soil`);
@@ -363,7 +363,7 @@ shoval.addEventListener('click',()=>{
             }
         }
         else{
-            shoval.style.backgroundColor='red';
+            shovel.style.backgroundColor='red';
          }
 }})
 
@@ -475,7 +475,7 @@ document.addEventListener('click',()=>{
     msg.style.display = "none";
     pickaxe.style.backgroundColor='initial';
     axe.style.backgroundColor='initial';
-    shoval.style.backgroundColor='initial';
+    shovel.style.backgroundColor='initial';
 
 })
 
