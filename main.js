@@ -210,12 +210,14 @@ function clearWorld(){
                 }  
             }
             
-            if(i==14){
+            if(i===14){
+                cube.classList.remove('soil');
                 cube.classList.add('grass');
                 cube.setAttribute('type',1);
             }
 
             if(i>14){
+                cube.classList.remove('grass');
                 cube.classList.add('soil');
                 cube.setAttribute('type',2);
             }
